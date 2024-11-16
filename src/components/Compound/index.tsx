@@ -4,12 +4,20 @@ import CompoundList from './CompoundList.tsx'
 import { range } from 'lodash'
 import { faker } from '@faker-js/faker/locale/en'
 import CompoundCard from './CompoundCard.tsx'
+import CompoundTabs from './CompoundTabs.tsx'
 
 type Option = { value: string; label: string }
+type Tab = { code: string; label: string; content: string }
 
 const options: Option[] = range(5).map((_item) => ({
     value: faker.string.uuid(),
     label: faker.lorem.lines(1),
+}))
+
+const tabs: Tab[] = range(5).map((_item) => ({
+    code: faker.string.uuid(),
+    label: faker.string.alphanumeric(5),
+    content: faker.lorem.lines(1),
 }))
 
 const Compound = () => {
@@ -97,6 +105,20 @@ const Compound = () => {
                     Табы
                 </mark>{' '}
             </h2>
+            <CompoundTabs defaultTab={tabs[0].code}>
+                <CompoundTabs.Triggers>
+                    <CompoundTabs.Triggers>
+                        {tabs.map((tab) => (
+                            <CompoundTabs.Trigger tab={tab} />
+                        ))}
+                    </CompoundTabs.Triggers>
+                </CompoundTabs.Triggers>
+                <CompoundTabs.Contents>
+                    {tabs.map((tab) => (
+                        <CompoundTabs.Content tab={tab} />
+                    ))}
+                </CompoundTabs.Contents>
+            </CompoundTabs>
         </Layout>
     )
 }
