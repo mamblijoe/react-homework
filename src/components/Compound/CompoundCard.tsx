@@ -1,4 +1,6 @@
 import React from 'react'
+import { twMerge } from 'tailwind-merge'
+import { de } from '@faker-js/faker'
 
 const CompoundCard = ({ children }) => {
     return (
@@ -8,10 +10,26 @@ const CompoundCard = ({ children }) => {
     )
 }
 
-CompoundCard.Category = function Category({ category }) {
+CompoundCard.Category = function Category({ category, align = 'center' }) {
+    const getAlignClassName = () => {
+        switch (align) {
+            case 'left':
+                return 'text-left'
+            case 'right':
+                return 'text-right'
+            default:
+                return 'text-center'
+        }
+    }
+
     return (
         <div>
-            <h5 className="p-4 text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+            <h5
+                className={twMerge(
+                    'p-4 text-xl font-semibold tracking-tight text-gray-900 dark:text-white',
+                    getAlignClassName()
+                )}
+            >
                 {category}
             </h5>
             <hr className="h-px my-2 bg-gray-200 border-0 dark:bg-gray-700" />
@@ -29,11 +47,24 @@ CompoundCard.Image = function Image() {
     )
 }
 
-CompoundCard.Title = function Title({ title }) {
+CompoundCard.Title = function Title({ title, primary = false }) {
     return (
-        <h5 className="text-xl font-semibold tracking-tight text-gray-900 dark:text-white">
+        <h5
+            className={twMerge(
+                'text-xl font-semibold tracking-tight text-gray-900 dark:text-white',
+                primary && 'dark:text-green-700'
+            )}
+        >
             {title}
         </h5>
+    )
+}
+
+CompoundCard.Text = function Text({ text }) {
+    return (
+        <p className="text-m tracking-tight text-gray-900 dark:text-white">
+            {text}
+        </p>
     )
 }
 

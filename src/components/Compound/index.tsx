@@ -9,7 +9,7 @@ type Option = { value: string; label: string }
 
 const options: Option[] = range(5).map((_item) => ({
     value: faker.string.uuid(),
-    label: faker.lorem.lines(),
+    label: faker.lorem.lines(1),
 }))
 
 const Compound = () => {
@@ -35,27 +35,61 @@ const Compound = () => {
                     Карточка
                 </mark>{' '}
             </h2>
-            <CompoundCard>
-                <CompoundCard.Category category={faker.lorem.lines()} />
-                <CompoundCard.Image />
-                <CompoundCard.Title title={faker.lorem.lines()} />
-                <CompoundCard.Rating
-                    total={faker.number.int({
-                        min: 1,
-                        max: 5,
-                    })}
-                />
-                <CompoundCard.PriceBox>
-                    <CompoundCard.Price
-                        price={faker.number.int({
-                            min: 100,
-                            max: 1000,
-                        })}
+            <div className={'flex gap-4'}>
+                <CompoundCard>
+                    <CompoundCard.Category
+                        category={faker.string.alphanumeric(5)}
                     />
-                    <CompoundCard.Cart />
-                </CompoundCard.PriceBox>
-                <CompoundCard.Select options={options} />
-            </CompoundCard>
+                    <CompoundCard.Title title={faker.string.alphanumeric(5)} />
+                    <CompoundCard.Text text={faker.lorem.lines(1)} />
+                </CompoundCard>
+                <CompoundCard>
+                    <CompoundCard.Category
+                        category={faker.string.alphanumeric(5)}
+                    />
+                    <CompoundCard.Image />
+                    <CompoundCard.PriceBox>
+                        <CompoundCard.Price
+                            price={faker.number.int({
+                                min: 100,
+                                max: 1000,
+                            })}
+                        />
+                    </CompoundCard.PriceBox>
+                    <CompoundCard.Title title={faker.string.alphanumeric(5)} />
+                </CompoundCard>
+                <CompoundCard>
+                    <CompoundCard.Image />
+                    <CompoundCard.PriceBox>
+                        <CompoundCard.Price
+                            price={faker.number.int({
+                                min: 100,
+                                max: 1000,
+                            })}
+                        />
+                    </CompoundCard.PriceBox>
+                    <CompoundCard.Title title={faker.string.alphanumeric(5)} />
+                    <CompoundCard.Text text={faker.lorem.lines(1)} />
+                    <CompoundCard.Select options={options} />
+                </CompoundCard>
+                <CompoundCard>
+                    <CompoundCard.Category
+                        align="right"
+                        category={faker.string.alphanumeric(5)}
+                    />
+                    <CompoundCard.PriceBox>
+                        <CompoundCard.Price
+                            price={faker.number.int({
+                                min: 100,
+                                max: 1000,
+                            })}
+                        />
+                    </CompoundCard.PriceBox>
+                    <CompoundCard.Title title={faker.string.alphanumeric(5)} />
+                    <CompoundCard.Text text={faker.lorem.lines(1)} />
+                    <CompoundCard.Select options={options} />
+                </CompoundCard>
+            </div>
             <hr className="h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
             <h2 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-black">
                 Практика:
