@@ -1,5 +1,6 @@
 import React, { ReactNode, useState } from 'react'
 import { noop } from 'lodash'
+import { twMerge } from 'tailwind-merge'
 
 type Option = { value: string; label: string }
 
@@ -95,17 +96,23 @@ CompoundList.List = function List({ children }: CompoundListProps) {
 }
 CompoundList.Item = function Checkbox({ option }: CompoundListItemProps) {
     const { selectedOptions, onChange } = useCompoundList()
+    const isChecked = selectedOptions.includes(option.value)
     return (
         <div className="flex items-center  mb-4">
             <label
-                className="text-sm font-norma cursor-pointer text-gray-600 flex align-baseline"
+                className={twMerge(
+                    'text-sm font-norma cursor-pointer text-gray-600 flex align-baseline',
+                    isChecked && 'text-red-700'
+                )}
                 onChange={(_) => onChange(option.value)}
             >
                 <input
-                    checked={selectedOptions.includes(option.value)}
+                    checked={isChecked}
                     type="checkbox"
                     value={option.value}
-                    className="w-5 h-5 appearance-none border cursor-pointer border-gray-300  rounded-md mr-2 hover:border-indigo-500 hover:bg-indigo-100 checked:bg-no-repeat checked:bg-center checked:border-indigo-500 checked:bg-indigo-100"
+                    className={twMerge(
+                        'w-5 h-5 appearance-none border cursor-pointer border-gray-300  rounded-md mr-2 hover:border-indigo-500 hover:bg-indigo-100 checked:bg-no-repeat checked:bg-center checked:border-indigo-500 checked:bg-indigo-100'
+                    )}
                 />
                 {option.value}
             </label>
