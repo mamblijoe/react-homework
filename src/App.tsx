@@ -1,11 +1,13 @@
 import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Navigation from './components/Navigation'
-import Animation from './components/Animation'
-import Compound from './components/Compound'
 import Tables from './components/Tables'
 import Advanced from './components/Advanced'
 import ParallaxAnimation from './components/Animation/Parallax.tsx'
+import CompoundCardPage from './Pages/CompoundCard.tsx'
+import CompoundListPage from './Pages/CompoundList.tsx'
+import CompoundTabsPage from './Pages/CompoundTabs.tsx'
+import TablesPage from './Pages/Tables.tsx'
 
 const router = createBrowserRouter([
     {
@@ -17,12 +19,20 @@ const router = createBrowserRouter([
         element: <ParallaxAnimation />,
     },
     {
-        path: '/compound',
-        element: <Compound />,
+        path: '/compound/card',
+        element: <CompoundCardPage />,
+    },
+    {
+        path: '/compound/list',
+        element: <CompoundListPage />,
+    },
+    {
+        path: '/compound/tabs',
+        element: <CompoundTabsPage />,
     },
     {
         path: '/tables',
-        element: <Tables />,
+        element: <TablesPage />,
     },
     {
         path: '/advanced',

@@ -1,35 +1,61 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
+const LINKS = [
+    {
+        to: '/advanced',
+        label: 'React: Advanced',
+    },
+    {
+        to: '/tables',
+        label: 'React: Tables',
+    },
+    {
+        to: '/animation',
+        label: 'React: Animation',
+        subLinks: [
+            { to: '/parallax', label: 'Parallax' },
+            { to: '/flip', label: 'Flip' },
+        ],
+    },
+    {
+        to: '/compound',
+        label: 'React: Compound',
+        subLinks: [
+            { to: '/list', label: 'List' },
+            { to: '/card', label: 'Card' },
+            { to: '/tabs', label: 'Tabs' },
+        ],
+    },
+]
+
 const Navigation = () => {
     return (
         <div>
             <nav>
                 <ul className={'flex flex-col gap-4'}>
-                    <li>
-                        <Link to={'/compound'}>React: Compound</Link>
-                    </li>
-                    <li>
-                        <Link to={'/advanced'}>React: Advanced</Link>
-                    </li>
-                    <li>
-                        React: Animation
-                        <ul className={'flex flex-col gap-1 pl-4'}>
+                    {LINKS.map((link) => {
+                        if (link.subLinks) {
+                            return link.subLinks.map((subLink) => (
+                                <li>
+                                    <Link
+                                        to={link.to + subLink.to}
+                                        key={link.to + subLink.to}
+                                    >
+                                        {link.label} - {subLink.label}
+                                    </Link>
+                                </li>
+                            ))
+                        }
+
+                        return (
                             <li>
-                                <Link to={'/animation/parallax'}>
-                                    React: Animation Parallax
+                                <Link to={link.to} key={link.to}>
+                                    {link.label}
                                 </Link>
                             </li>
-                            <li>
-                                <Link to={'/animation/flip'}>
-                                    React: Animation Flip
-                                </Link>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <Link to={'/tables'}>React: Tables</Link>
-                    </li>
+                        )
+                    })}
                 </ul>
             </nav>
         </div>
