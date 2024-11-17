@@ -13,7 +13,7 @@ const Layout: FC<LayoutProps> = ({ children, title }) => {
                 {title}
             </header>
             <div className="flex-1 flex flex-row gap-4 ">
-                <main className="flex-1 p-4 bg-white shadow-xl shadow-inner rounded-2xl">
+                <main className="flex-1 p-4 bg-white shadow-xl shadow-inner rounded-2xl overflow-hidden">
                     {children}
                 </main>
                 <nav className="order-first  p-4 bg-white shadow-xl shadow-inner rounded-2xl">

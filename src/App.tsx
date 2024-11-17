@@ -5,6 +5,7 @@ import Animation from './components/Animation'
 import Compound from './components/Compound'
 import Tables from './components/Tables'
 import Advanced from './components/Advanced'
+import ParallaxAnimation from './components/Animation/Parallax.tsx'
 
 const router = createBrowserRouter([
     {
@@ -12,8 +13,8 @@ const router = createBrowserRouter([
         element: <Navigation />,
     },
     {
-        path: '/animation',
-        element: <Animation />,
+        path: '/animation/parallax',
+        element: <ParallaxAnimation />,
     },
     {
         path: '/compound',
