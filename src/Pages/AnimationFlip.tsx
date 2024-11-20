@@ -1,7 +1,8 @@
 import React from 'react'
+import FlipAnimation from '../components/Animation/Flip.tsx'
 
 const AnimationFlipPage = () => {
-    return <div>AnimationFlip</div>
+    return <FlipAnimation />
 }
 
 export default AnimationFlipPage

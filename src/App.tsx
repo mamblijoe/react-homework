@@ -8,6 +8,8 @@ import CompoundCardPage from './Pages/CompoundCard.tsx'
 import CompoundListPage from './Pages/CompoundList.tsx'
 import CompoundTabsPage from './Pages/CompoundTabs.tsx'
 import TablesPage from './Pages/Tables.tsx'
+import AnimationParallaxPage from './Pages/AnimationParallax.tsx'
+import AnimationFlipPage from './Pages/AnimationFlip.tsx'
 
 const router = createBrowserRouter([
     {
@@ -16,7 +18,11 @@ const router = createBrowserRouter([
     },
     {
         path: '/animation/parallax',
-        element: <ParallaxAnimation />,
+        element: <AnimationParallaxPage />,
+    },
+    {
+        path: '/animation/flip',
+        element: <AnimationFlipPage />,
     },
     {
         path: '/compound/card',
